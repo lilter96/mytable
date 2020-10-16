@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using System.Runtime.InteropServices
+@model IEnumerable<User_table.Models.User>
+<form method="post" asp-action="Block" asp-controller="User">
+    <div class="d-flex">
+        <div class="png"><button name="block"><img src="images/block.png" /></button></div>
+        <div class="png"><button name="unblock"><img src="images/unblock.png" /></button></div>
+        <div class="png"><button name="delete"><img src="images/delete.png" /></button></div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <input id="global_checkbox" type="checkbox" aria-label="Checkbox for following text input">
+                </th>
+                <th>ID</th>
+                <th>UserName</th>
+                <th>UserEmail</th>
+                <th>RegisterDate</th>
+                <th>LastLoginData</th>
+                <th>IsBlocked</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var user in Model)
+                {
+                    <tr>
+                        <td>
+                            <input class="check-box" type="checkbox" name="AreChecked" value="@user.UserName" />
+                        </td>
+                        <td>@user.Id</td>
+                        <td>@user.UserName</td>
+                        <td>@user.Email</td>
+                        <td>@user.RegistrationDate</td>
+                        <td>@user.LastLoginDate</td>
+                        <td>
+                            @if (user.IsBlocked)
+                            {
+                                <p>Blocked</p>
+                            }
+                            else
+                            {
+                                <p>Unblocked</p>
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</form>
+<div class="d-flex justify-content-center">
+    <form class="form-group" asp-area="" asp-controller="Account" asp-action="Logout" method="post">
+        <button id="sign_in_button" type="submit" class="btn btn-primary">Sign out</button>
+    </form>
+</div>

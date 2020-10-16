@@ -1,0 +1,25 @@
+﻿@model User_table.ViewModels.RegisterViewModel
+@using (Html.BeginForm(new {ReturnUrl = ViewBag.ReturnUrl}))
+{
+
+}<div class="d-flex justify-content-center">
+     <form class="form-group" asp-area="" asp-controller="Account" asp-action="Register" method="post">
+         <div asp-validation-summary="All"></div>
+         <div class="form-group col-md-7">
+             <label asp-for="UserName">UserName</label>
+             <input asp-for="UserName" type="text" class="form-control" id="inputUserName" placeholder="UserName">
+             <span asp-validation-for="UserName"></span>
+         </div>
+         <div class="form-group col-md-7">
+             <label asp-for="Email">Email</label>
+             <input asp-for="Email" type="email" class="form-control" id="inputEmail" placeholder="Email">
+             <span asp-validation-for="Email"></span>
+         </div>
+         <div class="form-group col-md-7">
+             <label asp-for="Password">Password</label>
+             <input asp-for="Password" type="password" class="form-control" id="inputPassword" placeholder="Password">
+             <span asp-validation-for="Password"></span>
+         </div>
+         <button id="sign_in_button" type="submit" class="btn btn-primary">Sign in</button>
+     </form>
+    </div>
