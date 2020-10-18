@@ -1,41 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-@model IEnumerable<User_table.Models.User>
-<table class="table">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>UserName</th>
-        <th>UserEmail</th>
-        <th>RegisterDate</th>
-        <th>LastLoginData</th>
-        <th>IsBlocked</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var user in Model)
-    {
-        <tr>
-            <td>@user.Id</td>
-            <td>@user.UserName</td>
-            <td>@user.Email</td>
-            <td>@user.RegistrationDate</td>
-            <td>@user.LastLoginDate</td>
-            <td>
-                @if (user.IsBlocked)
-                {
-                    <p>Blocked</p>
-                }
-                else
-                {
-                    <p>Unblocked</p>
-                }
-            </td>
-        </tr>
-    }
-    </tbody>
-</table>
 <div class="d-flex justify-content-center">
     <div class="d-flex flex-column">
         <form asp-controller="Home" asp-action="RedirectToRegister" method="post">
